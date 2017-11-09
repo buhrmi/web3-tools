@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/buhrmi/web3-tools/issues"
   },
-  "homepage": "https://github.com/buhrmi/web3-tools#readme"
+  "homepage": "https://github.com/buhrmi/web3-tools#readme",
+  "dependencies": {
+    "ethereumjs-tx": "^1.3.3"
+  }
 }
