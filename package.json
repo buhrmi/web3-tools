@@ -1,6 +1,6 @@
 {
   "name": "web3-tools",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Collection of tools to simplify interaction with the Ethereum blockchain",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Blue-Wall-Japan/web3-tools.git"
+    "url": "git+https://github.com/buhrmi/web3-tools.git"
   },
   "keywords": [
     "web3",
