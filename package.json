@@ -1,0 +1,25 @@
+{
+  "name": "web3-tools",
+  "version": "0.1.4",
+  "description": "Collection of tools to simplify interaction with the Ethereum blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Blue-Wall-Japan/web3-tools.git"
+  },
+  "keywords": [
+    "web3",
+    "ethereum",
+    "smart",
+    "contracts"
+  ],
+  "author": "Stefan Buhrmester",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/buhrmi/web3-tools/issues"
+  },
+  "homepage": "https://github.com/buhrmi/web3-tools#readme"
+}
