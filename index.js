@@ -17,7 +17,7 @@ const Tx = require('ethereumjs-tx')
 let web3
 module.exports = function(_web3) {
   web3 = _web3
-  return {callContract, deployContract}
+  return {sendTransaction, deployContract}
 }
 
 /**
@@ -26,13 +26,13 @@ module.exports = function(_web3) {
  * @param {number} options.maxGas - When the estimated gas is higher than this, the transaction will not be sent and the promise rejected.
  * @param {string} options.methodName - The name of method to call
  * @param {string} options.contractAddress - The address of the contract
- * @param {string} options.contractJSON - The compiled JSON of the contract
+ * @param {string} options.contractABI - The ABI of the contract
  * @param {string} options.from - The address of the caller
  * @param {Buffer} options.fromKey - The private key of the caller
  * @param {Array} options.args - An array of arguments for the method call.
  * @returns {Promise<object>} - A promise that resolves to the ethereum transaction receipt
  */
-const callContract = function(options) {
+const sendTransaction = function(options) {
   let txData;
   let {from, args = [], fromKey, contractAddress, contractJSON, methodName, maxGas, contractSource, contractName} = options
 
@@ -40,9 +40,8 @@ const callContract = function(options) {
     let abi = null;
 
 
-    if (contractJSON) {
-      let contract = typeof(contractJSON) == 'string' ? JSON.parse(contractJSON) : contractJSON
-      abi = JSON.parse(contract.abi)
+    if (contractABI) {
+      abi = typeof(contractABI) == 'string' ? JSON.parse(contractABI) : contractABI
     }
     // dont have contract json. compile from source.
     else if (contractSource && contractName) {
@@ -86,7 +85,7 @@ const callContract = function(options) {
  * Calls a contract on the Ethereum network. Returns a promise that resolves with the transaction receipt.
  * @param {object} options - An object describing the contract method that should be called.
  * @param {number} options.maxGas - Maximum amount of gas to spend on deployment. If estimate is higher, the promise will reject.
- * @param {string} options.contractJSON - The compiled JSON of the contract
+ * @param {string} options.contractJSON - The compiled JSON of the contract. Needs to have a field "abi" and "bytecode"
  * @param {string} options.from - The address of the caller (the creator).
  * @param {Buffer} options.fromKey - The private key of the caller
  * @param {Array} options.args - An array of arguments to pass to constructor.

@@ -18,7 +18,7 @@ The library is initialized with a web3 instance. It exports an object with uncom
 
 ```js
 const web3 = someWeb3Instance
-const {deployContract, callContract} = require('web3-tools')(web3)
+const {deployContract, sendTransaction} = require('web3-tools')(web3)
 ```
 
 All functions of the library return a promise that resolves to a transaction receipt as soon as the contract is mined. A transaction receipt (for example for contract deployment) looks like this:
@@ -72,7 +72,7 @@ deployContract(options)
 .catch(console.error)
 ```
 
-### `callContract`
+### `sendTransaction`
 
 Call a method of a deployed contract. Will send a transaction to the network.
 
@@ -84,7 +84,7 @@ Call a method of a deployed contract. Will send a transaction to the network.
      - `options.contractJSON`: The compiled JSON of the contract
      - `options.from`: The caller address. Use your public ethereum address here.
      - `options.fromKey`: The private key belonging to the caller.
-     - `options.args`: Arguments to be passed to the method. 
+     - `options.args`: Array of arguments to be passed to the method. 
      - `options.maxGas`: The maximum amount of gas to pay. Promise will reject if too low.
 
 #### Returns
@@ -104,7 +104,7 @@ let options = {
     args: ['0x11b1EeC366d1e79923c15514f1B8C014Ce780c8D', 100]
 }
 
-callContract(options)
+sendTransaction(options)
 .then(function(receipt) {
   console.log('Done')
 })
