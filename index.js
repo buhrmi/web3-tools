@@ -76,7 +76,8 @@ const sendTransaction = function(options) {
     let tx = new Tx(txData)
     tx.sign(fromKey)
     return web3.eth.sendSignedTransaction('0x' + tx.serialize().toString('hex'), function(err, hash) {
-      if (hash) console.log('Sent transaction ' + hash + ' (' + methodName + ' with ' + txData.gasLimit + ' gasLimit) to network to mine.')
+      //if (hash) console.log('Sent transaction ' + hash + ' (' + methodName + ' with ' + txData.gasLimit + ' gasLimit) to network to mine.')
+      if (hash) console.log(hash)
     })
   })
 }
