@@ -81,7 +81,7 @@ Call a method of a deployed contract. Will send a transaction to the network.
   1. `options`
      - `options.methodName`: The name of the method to be called
      - `options.contractAddress`: The address of the contract
-     - `options.contractJSON`: The compiled JSON of the contract
+     - `options.contractABI`: The compiled ABI of the contract
      - `options.from`: The caller address. Use your public ethereum address here.
      - `options.fromKey`: The private key belonging to the caller.
      - `options.args`: Array of arguments to be passed to the method. 
@@ -98,7 +98,7 @@ let options = {
     maxGas: 10000,
     methodName: 'sendTokens',
     contractAddress: '0x6dc1733d8c009e908274c055e2656ad3f45a860f',
-    contractJSON: fs.readFileSync("./mycontract.json").toString(),
+    contractABI: fs.readFileSync("./mycontract.abi").toString(),
     from: '0x11b1EeC366d1e79923c15514f1B8C014Ce780c8D',
     fromKey: Buffer.from('f8ce489f073b6aa62b8841894e42b0fac0b522185dc350af0a4f2ce3b43633a9', 'hex'),
     args: ['0x11b1EeC366d1e79923c15514f1B8C014Ce780c8D', 100]
