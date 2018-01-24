@@ -2,6 +2,7 @@
 
 A collection of tools to interact with the Ethereum blockchain through a web3 instance.
 
+
 ## Installation
 
 ### Node.js
@@ -17,7 +18,7 @@ Browser package is currently not available. Stay tuned. For now, you can use bro
 The library is initialized with a web3 instance. It exports an object with uncomplicated, easy to use functions.
 
 ```js
-const web3 = someWeb3Instance
+const web3 = someWeb3Instance // requires web3 1.0
 const {deployContract, sendTransaction} = require('web3-tools')(web3)
 ```
 

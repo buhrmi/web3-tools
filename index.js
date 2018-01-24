@@ -34,7 +34,7 @@ module.exports = function(_web3) {
  */
 const sendTransaction = function(options) {
   let txData;
-  let {from, args = [], fromKey, contractAddress, contractJSON, methodName, maxGas, contractSource, contractName} = options
+  let {from, args = [], fromKey, contractAddress, contractABI, methodName, maxGas, contractSource, contractName} = options
 
   return new Promise(function(resolve, reject) {
     let abi = null;

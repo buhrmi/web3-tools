@@ -1,6 +1,6 @@
 {
   "name": "web3-tools",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Collection of tools to simplify interaction with the Ethereum blockchain",
   "main": "index.js",
   "scripts": {
