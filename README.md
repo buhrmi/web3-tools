@@ -88,6 +88,8 @@ Call a method of a deployed contract. Will send a transaction to the network.
      - `options.args`: Array of arguments to be passed to the method. 
      - `options.maxGas`: The maximum amount of gas to pay. Promise will reject if too low.
 
+  2. `callback`: A function that takes two parameters `err` and `txHash`. It is immediately executed after the transaction has been sent to the Ethereum network. Note that this does not mean the transaction was successful. You will have to wait for the transaction receipt (passed from the promise) to see if the transaction was successfull or not.
+
 #### Returns
 
 A promise that resolves to the transaction receipt when the transaction is mined.
@@ -105,7 +107,7 @@ let options = {
     args: ['0x11b1EeC366d1e79923c15514f1B8C014Ce780c8D', 100]
 }
 
-sendTransaction(options)
+sendTransaction(options, callback)
 .then(function(receipt) {
   console.log('Done')
 })
