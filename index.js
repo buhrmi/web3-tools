@@ -32,7 +32,7 @@ module.exports = function(_web3) {
  * @param {Array} options.args - An array of arguments for the method call.
  * @returns {Promise<object>} - A promise that resolves to the ethereum transaction receipt
  */
-const sendTransaction = function(options) {
+const sendTransaction = function(options, cb) {
   let txData;
   let {from, args = [], fromKey, contractAddress, contractABI, methodName, maxGas, contractSource, contractName} = options
 
@@ -75,10 +75,7 @@ const sendTransaction = function(options) {
     txData.gasLimit = estimate
     let tx = new Tx(txData)
     tx.sign(fromKey)
-    return web3.eth.sendSignedTransaction('0x' + tx.serialize().toString('hex'), function(err, hash) {
-      //if (hash) console.log('Sent transaction ' + hash + ' (' + methodName + ' with ' + txData.gasLimit + ' gasLimit) to network to mine.')
-      if (hash) console.log(hash)
-    })
+    return web3.eth.sendSignedTransaction('0x' + tx.serialize().toString('hex'), cb)
   })
 }
 
@@ -92,7 +89,7 @@ const sendTransaction = function(options) {
  * @param {Array} options.args - An array of arguments to pass to constructor.
  * @returns {Promise<object>} - A promise that resolves to the ethereum transaction receipt
  */
-const deployContract = function(options) {
+const deployContract = function(options, cb) {
   let txData;
   let {from, args = [], fromKey, contractAddress, contractJSON, methodName, maxGas, contractSource, contractName} = options
 
@@ -138,9 +135,7 @@ const deployContract = function(options) {
     txData.gasLimit = estimate
     let tx = new Tx(txData)
     tx.sign(fromKey)
-    return web3.eth.sendSignedTransaction('0x' + tx.serialize().toString('hex'), function(err, hash) {
-      if (hash) console.log('Sent deployment transaction ' + hash + ' (' + methodName + ' with ' + txData.gasLimit + ' gasLimit) to network to mine.')
-    })
+    return web3.eth.sendSignedTransaction('0x' + tx.serialize().toString('hex'), cb)
   })
 }
 
